@@ -24,6 +24,7 @@ function create() {
 
 	SCORETXT = game.add.text(16, 16, 'Score: 0', {
 		fontSize: '30px',
+		fontFamily: 'Helvetica',
 		fill: '#222'
 	});
 
@@ -175,9 +176,7 @@ function growBH() {
 	graphics.drawCircle(game.world.centerX, game.world.centerY, d);
 	graphics.endFill();
 
-	console.log(circleD);
-
-
+	console.log(d);
 }
 
 bhInt = setInterval(function () {
@@ -189,6 +188,21 @@ bhInt = setInterval(function () {
 
 }, 1500)
 
+function gameOver() {
+	if (d > window.innerWidth) {
+		SCORETXT = game.add.text(16, 16, 'Score: 0', {
+			fontSize: '30px',
+			fontFamily: 'Helvetica',
+			textAlign: 'center',
+			fill: '#fff'
+		});
+
+		SCORETXT.text = 'Game Over!'
+	}
+}
+
 function update() {
+	gameOver()
+
 	//	nextLevel();
 }
