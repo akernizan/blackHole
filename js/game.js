@@ -4,7 +4,7 @@ var stars;
 var star;
 
 var d = 50;
-var circleD = (d * 2)
+//var circleD = (d * 2)
 
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'wrapper', {
 	preload: preload,
@@ -59,16 +59,16 @@ function create() {
 	star9 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 444), 'star');
 	star10 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 304), 'star');
 
-	star.lifespan = 3000;
-	star2.lifespan = 3000;
-	star3.lifespan = 3000;
-	star4.lifespan = 3000;
-	star5.lifespan = 3000;
-	star6.lifespan = 3000;
-	star7.lifespan = 3000;
-	star8.lifespan = 3000;
-	star9.lifespan = 3000;
-	star10.lifespan = 3000;
+	star.lifespan = 2900;
+	star2.lifespan = 2900;
+	star3.lifespan = 2900;
+	star4.lifespan = 2900;
+	star5.lifespan = 2900;
+	star6.lifespan = 2900;
+	star7.lifespan = 2900;
+	star8.lifespan = 2900;
+	star9.lifespan = 2900;
+	star10.lifespan = 2900;
 
 
 	star.events.onInputDown.add(starClick, this);
@@ -172,7 +172,7 @@ function growBH() {
 	graphics = game.add.graphics(10, 10);
 	graphics.lineStyle(0);
 	graphics.beginFill('#222222', 1);
-	graphics.drawCircle(game.world.centerX, game.world.centerY, circleD);
+	graphics.drawCircle(game.world.centerX, game.world.centerY, d);
 	graphics.endFill();
 
 	console.log(circleD);
@@ -181,18 +181,13 @@ function growBH() {
 }
 
 bhInt = setInterval(function () {
-	//	growBH();
-
-	//
-	//	var i = 0;
-	//
 	graphics = game.add.graphics(10, 10);
 	graphics.lineStyle(0);
 	graphics.beginFill('#222222', 1);
-	graphics.drawCircle(game.world.centerX, game.world.centerY, (circleD += 50));
+	graphics.drawCircle(game.world.centerX, game.world.centerY, (d += 50));
 	graphics.endFill();
 
-}, 1000)
+}, 1500)
 
 function update() {
 	//	nextLevel();
