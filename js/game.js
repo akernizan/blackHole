@@ -25,14 +25,14 @@ function create() {
 	SCORETXT = game.add.text(16, 16, 'Score: 0', {
 		fontSize: '30px',
 		fontFamily: 'Helvetica',
-		fill: '#222'
+		fill: '#fff'
 	});
 
 	height = game.world.height;
 	width = game.world.width;
 
 	this.game.canvas.id = 'game';
-	game.stage.backgroundColor = '#7ec0ee';
+	game.stage.backgroundColor = '#003366';
 	cling = this.game.add.audio('cling');
 
 	graphics = game.add.graphics(10, 10);
@@ -180,29 +180,42 @@ function growBH() {
 }
 
 bhInt = setInterval(function () {
-	graphics = game.add.graphics(10, 10);
-	graphics.lineStyle(0);
-	graphics.beginFill('#222222', 1);
-	graphics.drawCircle(game.world.centerX, game.world.centerY, (d += 50));
-	graphics.endFill();
+	if (SCORE <= 40) {
+		graphics = game.add.graphics(10, 10);
+		graphics.lineStyle(0);
+		graphics.beginFill('#222222', 1);
+		graphics.drawCircle(game.world.centerX, game.world.centerY, (d += 50));
+		graphics.endFill();
+	} else if (SCORE <= 100) {
+		graphics = game.add.graphics(10, 10);
+		graphics.lineStyle(0);
+		graphics.beginFill('#222222', 1);
+		graphics.drawCircle(game.world.centerX, game.world.centerY, (d += 50));
+		graphics.endFill();
+	} else if (SCORE == 110) {
+		console.log('hello');
+	}
+
 
 }, 1500)
 
 function gameOver() {
 	if (d > window.innerWidth) {
-		SCORETXT = game.add.text(16, 16, 'Score: 0', {
-			fontSize: '30px',
+		SCORETXT = game.add.text(200, 200, 'Score: 0', {
+			fontSize: '50px',
 			fontFamily: 'Helvetica',
 			textAlign: 'center',
 			fill: '#fff'
 		});
 
-		SCORETXT.text = 'Game Over!'
+		SCORETXT.text = '';
+		SCORETXT.text = 'Game Over!';
 	}
 }
 
-function update() {
-	gameOver()
 
-	//	nextLevel();
+function update() {
+	gameOver();
+
+
 }
