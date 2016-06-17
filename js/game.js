@@ -3,7 +3,7 @@ var SCORETXT;
 var stars;
 var star;
 
-var d = 50;
+var d = 0;
 //var circleD = (d * 2)
 
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'wrapper', {
@@ -35,13 +35,13 @@ function create() {
 	game.stage.backgroundColor = '#003366';
 	cling = this.game.add.audio('cling');
 
-	graphics = game.add.graphics(10, 10);
-	graphics.lineStyle(0);
-	graphics.beginFill('#222222', 1);
-	graphics.drawCircle(game.world.centerX, game.world.centerY, d);
-	graphics.endFill();
+	//	graphics = game.add.graphics(10, 10);
+	//	graphics.lineStyle(0);
+	//	graphics.beginFill('#222222', 1);
+	//	graphics.drawCircle(game.world.centerX, game.world.centerY, d);
+	//	graphics.endFill();
 
-	window.graphics = graphics;
+	//	window.graphics = graphics;
 
 	stars = game.add.group();
 	stars.enableBody = true;
@@ -50,26 +50,26 @@ function create() {
 	//	starArray = [star, star2, star3, star4, star5, star6, star7, star8];
 
 	star = stars.create(Math.floor(Math.random() * 300), 200, 'star');
-	star2 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 400), 'star');
-	star3 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 450), 'star');
-	star4 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 250), 'star');
-	star5 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 350), 'star');
-	star6 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 300), 'star');
-	star7 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 600), 'star');
-	star8 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 344), 'star');
-	star9 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 444), 'star');
-	star10 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 304), 'star');
+	star2 = stars.create(Math.floor(Math.random() * 430), Math.floor(Math.random() * 400), 'star');
+	star3 = stars.create(Math.floor(Math.random() * 550), Math.floor(Math.random() * 450), 'star');
+	star4 = stars.create(Math.floor(Math.random() * 600), Math.floor(Math.random() * 450), 'star');
+	star5 = stars.create(Math.floor(Math.random() * 700), Math.floor(Math.random() * 350), 'star');
+	star6 = stars.create(Math.floor(Math.random() * 575), Math.floor(Math.random() * 500), 'star');
+	star7 = stars.create(Math.floor(Math.random() * 510), Math.floor(Math.random() * 600), 'star');
+	star8 = stars.create(Math.floor(Math.random() * 450), Math.floor(Math.random() * 344), 'star');
+	star9 = stars.create(Math.floor(Math.random() * 475), Math.floor(Math.random() * 444), 'star');
+	star10 = stars.create(Math.floor(Math.random() * 500), Math.floor(Math.random() * 504), 'star');
 
-	star.lifespan = 2900;
-	star2.lifespan = 2900;
-	star3.lifespan = 2900;
-	star4.lifespan = 2900;
-	star5.lifespan = 2900;
-	star6.lifespan = 2900;
-	star7.lifespan = 2900;
-	star8.lifespan = 2900;
-	star9.lifespan = 2900;
-	star10.lifespan = 2900;
+	star.lifespan = 2700;
+	star2.lifespan = 2700;
+	star3.lifespan = 2700;
+	star4.lifespan = 2700;
+	star5.lifespan = 2700;
+	star6.lifespan = 2700;
+	star7.lifespan = 2700;
+	star8.lifespan = 2700;
+	star9.lifespan = 2700;
+	star10.lifespan = 2700;
 
 
 	star.events.onInputDown.add(starClick, this);
@@ -173,27 +173,28 @@ function growBH() {
 	graphics = game.add.graphics(10, 10);
 	graphics.lineStyle(0);
 	graphics.beginFill('#222222', 1);
-	graphics.drawCircle(game.world.centerX, game.world.centerY, d);
+	graphics.drawCircle(game.world.centerX, game.world.centerY, (d += 50));
 	graphics.endFill();
+}
 
-	console.log(d);
+function shrinkBH() {
+
+	graphics = game.add.graphics(10, 10);
+	graphics.lineStyle(0);
+	graphics.beginFill('#222222', 1);
+	graphics.drawCircle(game.world.centerX, game.world.centerY, (d -= 50));
+	graphics.endFill();
 }
 
 bhInt = setInterval(function () {
-	if (SCORE <= 40) {
+	if (SCORE <= 50) {
+		growBH()
+	} else {
 		graphics = game.add.graphics(10, 10);
 		graphics.lineStyle(0);
 		graphics.beginFill('#222222', 1);
-		graphics.drawCircle(game.world.centerX, game.world.centerY, (d += 50));
+		graphics.drawCircle(game.world.centerX, game.world.centerY, (d -= 50));
 		graphics.endFill();
-	} else if (SCORE <= 100) {
-		graphics = game.add.graphics(10, 10);
-		graphics.lineStyle(0);
-		graphics.beginFill('#222222', 1);
-		graphics.drawCircle(game.world.centerX, game.world.centerY, (d += 50));
-		graphics.endFill();
-	} else if (SCORE == 110) {
-		console.log('hello');
 	}
 
 
